@@ -61,12 +61,26 @@ try {
 		if ($messeage_type == "location") {
 			// 位置情報のデータを取得
 			$locaation = $bot->get_location();
+			$lat = $locaation['latitude'];
+			$log = $locaation['longitude'];
+			$url = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=6a96f847f3217c94&lat=$lat&lng=$log&range=5&format=json';
+			//セッション初期化
+			$ch = curl_init();
+			//オプション
+			url_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+			//値を取得する。
+			$res =  curl_exec($ch);
+			$json = json_decode($res, true);	
+			$nameone = $json['shop']['0']['urls']['pc'] . $json['results']['shop']['0']['name'] . $json['results']['shop'][0]['open'];
+			/*	
 			$locaation_test = "";
 			foreach ($locaation as $key => $value) {
 				$locaation_test .= $key . ":" . $value . "\n";
 			}
+			*/	
 			// メッセージを追加
-			$bot->add_text_builder($locaation_test);
+			$bot->add_text_builder($nameone);
 		}
 
 		// 画像メッセージの追加
