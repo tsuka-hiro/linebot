@@ -1,5 +1,50 @@
 <?php
 require_once __DIR__ . '/linebot.php';
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/define.php';
+
+use \LINE\LINEBot;
+use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use \LINE\LINEBot\Constant\HTTPHeader;
+use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\LocationMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\VideoMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\AudioMessageBuilder;
+use \LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder;
+use \LINE\LINEBot\Event\MessageEvent;
+use \LINE\LINEBot\Event\PostbackEvent;
+use \LINE\LINEBot\Event\MessageEvent\TextMessage;
+use \LINE\LINEBot\Event\MessageEvent\StickerMessage;
+use \LINE\LINEBot\Event\MessageEvent\LocationMessage;
+use \LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
+use \LINE\LINEBot\TemplateActionBuilder\PostbackTemplateActionBuilder;
+use \LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
+use \LINE\LINEBot\TemplateActionBuilder\DatetimePickerTemplateActionBuilder;
+use \LINE\LINEBot\TemplateActionBuilder\CameraTemplateActionBuilder;
+use \LINE\LINEBot\TemplateActionBuilder\CameraRollTemplateActionBuilder;
+use \LINE\LINEBot\TemplateActionBuilder\LocationTemplateActionBuilder;
+use \LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\ImagemapMessageActionBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
+use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
+use LINE\LINEBot\MessageBuilder\FlexMessageBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\BubbleBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\ContentsBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\BoxBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\TextBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\SeparatorBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\ButtonBuilder;
+use LINE\LINEBot\MessageBuilder\FlexBuilder\ImageBuilder;
 
 $bot = new LineBotClass();
 
